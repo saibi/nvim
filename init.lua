@@ -26,6 +26,8 @@ opts.cursorline = true
 opts.hlsearch = true
 opts.incsearch = true
 
+-- .nvim.lua 인식 
+opts.exrc = true
 
 require ("config.lazy")
 require ("keymaps")
