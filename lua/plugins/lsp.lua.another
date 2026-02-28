@@ -1,0 +1,63 @@
+return {
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
+    config = function()
+      -- 1. Mason 초기화 (바이너리 관리)
+      require("mason").setup()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "clangd" },
+      })
+
+      -- 2. Neovim 0.11+ 방식의 서버 설정 (vim.lsp.config 사용)
+      -- 기존의 lspconfig.clangd.setup 대신 vim.lsp.enable을 사용합니다.
+      if vim.lsp.config then
+        -- clangd 설정 정의
+        vim.lsp.config("clangd", {
+          cmd = {
+            "clangd",
+            "--background-index",
+            "--clang-tidy",
+            "--header-insertion=iwyu",
+            -- macOS의 utf-16 인코딩 이슈 해결
+            "--offset-encoding=utf-16",
+          },
+          -- 프로젝트 루트 탐색 로직
+          root_dir = vim.fs.root(0, { "compile_commands.json", ".clangd", ".git" }),
+        })
+        
+        -- 서버 활성화
+        vim.lsp.enable("clangd")
+      else
+        -- 0.11 미만 버전을 위한 하위 호환성 유지 (필요시)
+        require("lspconfig").clangd.setup({
+          capabilities = { offsetEncoding = { "utf-16" } },
+        })
+      end
+
+      -- 3. LSP 단축키 설정 (LspAttach)
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+        callback = function(ev)
+          local opts = { buffer = ev.buf }
+          
+          -- [코드 탐색]
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)      -- 정의 이동
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)     -- 선언 이동
+          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)  -- 구현 이동
+          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)      -- 사용처 목록
+          vim.keymap.set("n", "K",  vim.lsp.buf.hover, opts)           -- 정보 팝업
+
+          -- [clangd 전용 기능: 소스/헤더 전환]
+          local client = vim.lsp.get_client_by_id(ev.data.client_id)
+          if client and client.name == "clangd" then
+            vim.keymap.set("n", "gs", "<cmd>ClangdSwitchSourceHeader<cr>", opts)
+          end
+        end,
+      })
+    end,
+  },
+}
