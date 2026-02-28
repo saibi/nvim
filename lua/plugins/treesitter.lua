@@ -52,7 +52,7 @@ return {
         "rust",
         "python", "bash", "lua",
         "javascript", "typescript", "tsx", "html", "css",
-        "json", "jsonc", "yaml", "toml",
+        "json", "yaml", "toml",
         "markdown", "markdown_inline",
         "vim", "vimdoc", "query",
         "dockerfile", "gitignore",
@@ -92,7 +92,7 @@ return {
           "python", "bash", "lua",
           "javascript", "typescript",
           "html", "css",
-          "json", "jsonc", "toml",
+          "json", "toml",
           "markdown",
         },
         callback = function()
