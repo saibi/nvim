@@ -39,15 +39,6 @@ opts.exrc = true
 
 require ("config.lazy")
 
-require'nvim-treesitter'.install { 'c', 'cpp', 'rust', 'javascript', 'zig' }
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'c' },
-  callback = function() vim.treesitter.start() end,
-})
-vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-
--- vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
--- vim.wo[0][0].foldmethod = 'expr'
 
 
 
