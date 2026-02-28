@@ -23,7 +23,7 @@ opts.backup = false
 opts.cursorline = true
 
 -- 검색
-opts.hlsearch = false
+opts.hlsearch = true
 opts.incsearch = true
 
 
