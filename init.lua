@@ -94,6 +94,14 @@ vim.keymap.set('n', 'gs', function()
 end)
 
 
+-- treesitter 에서 c, cpp 자동 indent 가 잘 안됨. 끄기 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "c", "cpp" },
+  callback = function()
+    vim.opt_local.indentexpr = ""
+  end,
+})
+
 -- keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- VS Code 스타일 줄 이동
