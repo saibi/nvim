@@ -37,6 +37,9 @@ opts.incsearch = true
 -- .nvim.lua 인식 
 opts.exrc = true
 
+-- colorscheme
+vim.cmd.colorscheme("lunaperche")
+
 require ("config.lazy")
 
 
