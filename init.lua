@@ -41,7 +41,6 @@ require ("config.lazy")
 
 
 
-
 -- keymaps
 local keymap = vim.keymap
 
@@ -140,6 +139,3 @@ vim.api.nvim_create_autocmd("FileType", {
 -- keymap.set("n", "<leader>bx", "<cmd>bdelete<CR>", { silent = true })
 -- keymap.set("n", "<leader>bb", "<cmd>bnext<CR>", { silent = true })
 -- keymap.set("n", "<leader>bB", "<cmd>bprev<CR>", { silent = true })
-
-
-
