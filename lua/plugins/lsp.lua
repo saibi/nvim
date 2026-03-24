@@ -9,7 +9,7 @@ return {
       -- 1. Mason 설정 (바이너리 관리)
       require("mason").setup()
       require("mason-lspconfig").setup({
-        ensure_installed = { "clangd" },
+        ensure_installed = { "clangd", "rust_analyzer", "bashls", "pyright", "ts_ls", "lua_ls" },
       })
 
       -- 2. Neovim 0.11+ 스타일의 LSP 활성화
@@ -19,9 +19,19 @@ return {
       if vim.lsp.config then
           -- 최신 Neovim 0.11 방식
           vim.lsp.enable("clangd")
+          vim.lsp.enable("rust_analyzer")
+          vim.lsp.enable("bashls")
+          vim.lsp.enable("pyright")
+          vim.lsp.enable("ts_ls")
+          vim.lsp.enable("lua_ls")
       else
           -- 하위 호환성을 위한 기존 방식 (v3.0.0 이전까지)
           require("lspconfig").clangd.setup({})
+          require("lspconfig").rust_analyzer.setup({})
+          require("lspconfig").bashls.setup({})
+          require("lspconfig").pyright.setup({})
+          require("lspconfig").ts_ls.setup({})
+          require("lspconfig").lua_ls.setup({})
       end
 
       -- 3. LSP 단축키 (LspAttach 이벤트 사용)
