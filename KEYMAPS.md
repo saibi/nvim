@@ -40,11 +40,11 @@
 | `gcO`               | Insert comment to the previous line and enters INSERT mode         | plugins/comment.lua         |
 | `gcA`               | Insert comment to end of the current line and enters INSERT mode   | plugins/comment.lua         |
 | `<leader>cc`        | Copilot Chat 토글                                                  | plugins/copilot-chat.lua    |
-| `<leader>AF`        | Cursor agent (float)                                               | plugins/cursorcli.lua       |
-| `<leader>AV`        | Cursor agent (vsplit)                                              | plugins/cursorcli.lua       |
-| `<leader>AH`        | Cursor agent (hsplit)                                              | plugins/cursorcli.lua       |
-| `<leader>AS`        | Cursor agent 채팅 선택                                             | plugins/cursorcli.lua       |
-| `<leader>AE`        | Cursor agent 에러 수정                                             | plugins/cursorcli.lua       |
+| `<leader>uf`        | Cursor agent (float)                                               | plugins/cursorcli.lua       |
+| `<leader>uv`        | Cursor agent (vsplit)                                              | plugins/cursorcli.lua       |
+| `<leader>uh`        | Cursor agent (hsplit)                                              | plugins/cursorcli.lua       |
+| `<leader>us`        | Cursor agent 채팅 선택                                             | plugins/cursorcli.lua       |
+| `<leader>ue`        | Cursor agent 에러 수정                                             | plugins/cursorcli.lua       |
 | `gd`                | 정의로 이동 (LSP)                                                  | plugins/lsp.lua             |
 | `gr`                | 참조 목록 (LSP)                                                    | plugins/lsp.lua             |
 | `K`                 | 호버 정보 (LSP)                                                    | plugins/lsp.lua             |
@@ -88,7 +88,7 @@
 | `<leader>ce` | 코드 설명                    | plugins/copilot-chat.lua |
 | `<leader>cr` | 코드 리뷰                    | plugins/copilot-chat.lua |
 | `<leader>cf` | 코드 수정                    | plugins/copilot-chat.lua |
-| `<leader>AA` | Cursor agent 선택 코드 전송  | plugins/cursorcli.lua    |
+| `<leader>ua` | Cursor agent 선택 코드 전송  | plugins/cursorcli.lua    |
 
 ## Normal / Visual / Operator Mode
 
