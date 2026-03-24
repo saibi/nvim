@@ -1,7 +1,7 @@
 # Neovim Keymaps
 
-> 자동 생성: 2026-03-20
-> `python3 gen_keymaps.py --nvim-dir /Users/saibi/.config/nvim` 로 재생성
+> 자동 생성: 2026-03-24
+> `python3 gen_keymaps.py --nvim-dir /home/saibi/.config/nvim` 로 재생성
 
 ## Normal Mode
 
@@ -20,6 +20,16 @@
 | `g>`                | 다음 진단으로                                                      | init.lua                    |
 | `g<`                | 이전 진단으로                                                      | init.lua                    |
 | `gs`                | 파일 확장자 반대 파일 점프                                         | init.lua                    |
+| `<leader>a`         | AI/Claude Code                                                     | plugins/claudecode.lua      |
+| `<leader>ac`        | Toggle Claude                                                      | plugins/claudecode.lua      |
+| `<leader>af`        | Focus Claude                                                       | plugins/claudecode.lua      |
+| `<leader>ar`        | Resume Claude                                                      | plugins/claudecode.lua      |
+| `<leader>aC`        | Continue Claude                                                    | plugins/claudecode.lua      |
+| `<leader>am`        | Select Claude model                                                | plugins/claudecode.lua      |
+| `<leader>ab`        | Add current buffer                                                 | plugins/claudecode.lua      |
+| `<leader>as`        | Add file                                                           | plugins/claudecode.lua      |
+| `<leader>aa`        | Accept diff                                                        | plugins/claudecode.lua      |
+| `<leader>ad`        | Deny diff                                                          | plugins/claudecode.lua      |
 | `gcc`               | Toggles the current line using linewise comment                    | plugins/comment.lua         |
 | `gbc`               | Toggles the current line using blockwise comment                   | plugins/comment.lua         |
 | `[count]gcc`        | Toggles the number of line given as a prefix-count using linewise  | plugins/comment.lua         |
@@ -30,11 +40,11 @@
 | `gcO`               | Insert comment to the previous line and enters INSERT mode         | plugins/comment.lua         |
 | `gcA`               | Insert comment to end of the current line and enters INSERT mode   | plugins/comment.lua         |
 | `<leader>cc`        | Copilot Chat 토글                                                  | plugins/copilot-chat.lua    |
-| `<leader>af`        | Cursor agent (float)                                               | plugins/cursorcli.lua       |
-| `<leader>av`        | Cursor agent (vsplit)                                              | plugins/cursorcli.lua       |
-| `<leader>ah`        | Cursor agent (hsplit)                                              | plugins/cursorcli.lua       |
-| `<leader>as`        | Cursor agent 채팅 선택                                             | plugins/cursorcli.lua       |
-| `<leader>ae`        | Cursor agent 에러 수정                                             | plugins/cursorcli.lua       |
+| `<leader>AF`        | Cursor agent (float)                                               | plugins/cursorcli.lua       |
+| `<leader>AV`        | Cursor agent (vsplit)                                              | plugins/cursorcli.lua       |
+| `<leader>AH`        | Cursor agent (hsplit)                                              | plugins/cursorcli.lua       |
+| `<leader>AS`        | Cursor agent 채팅 선택                                             | plugins/cursorcli.lua       |
+| `<leader>AE`        | Cursor agent 에러 수정                                             | plugins/cursorcli.lua       |
 | `gd`                | 정의로 이동 (LSP)                                                  | plugins/lsp.lua             |
 | `gr`                | 참조 목록 (LSP)                                                    | plugins/lsp.lua             |
 | `K`                 | 호버 정보 (LSP)                                                    | plugins/lsp.lua             |
@@ -65,6 +75,7 @@
 
 | 키           | 설명                                       | 출처                     |
 | ------------ | ------------------------------------------ | ------------------------ |
+| `<leader>as` | Send to Claude                             | plugins/claudecode.lua   |
 | `gc`         | Toggles the region using linewise comment  | plugins/comment.lua      |
 | `gb`         | Toggles the region using blockwise comment | plugins/comment.lua      |
 | `<leader>cq` | 선택 코드에 질문 입력                      | plugins/copilot-chat.lua |
@@ -77,7 +88,7 @@
 | `<leader>ce` | 코드 설명                    | plugins/copilot-chat.lua |
 | `<leader>cr` | 코드 리뷰                    | plugins/copilot-chat.lua |
 | `<leader>cf` | 코드 수정                    | plugins/copilot-chat.lua |
-| `<leader>aa` | Cursor agent 선택 코드 전송  | plugins/cursorcli.lua    |
+| `<leader>AA` | Cursor agent 선택 코드 전송  | plugins/cursorcli.lua    |
 
 ## Normal / Visual / Operator Mode
 

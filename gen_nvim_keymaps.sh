@@ -272,6 +272,34 @@ def parse_default_keymaps(text: str, source: str) -> list:
     return results
 
 
+# ── 중복 감지 ───────────────────────────────────────────────────
+
+def get_individual_modes(mode_str: str) -> set:
+    return {m.strip() for m in mode_str.split("/")}
+
+
+def find_duplicates(all_entries: list) -> list:
+    from collections import defaultdict
+    key_entries = defaultdict(list)
+    for e in all_entries:
+        key_entries[e["key"]].append(e)
+
+    duplicates = []
+    for key, entries in key_entries.items():
+        seen_pairs = set()
+        for i in range(len(entries)):
+            for j in range(i + 1, len(entries)):
+                e1, e2 = entries[i], entries[j]
+                if e1["source"] == e2["source"]:
+                    continue
+                if get_individual_modes(e1["mode"]) & get_individual_modes(e2["mode"]):
+                    pair_key = (key, e1["source"], e2["source"])
+                    if pair_key not in seen_pairs:
+                        seen_pairs.add(pair_key)
+                        duplicates.append({"key": key, "entry1": e1, "entry2": e2})
+    return duplicates
+
+
 # ── 마크다운 생성 ───────────────────────────────────────────────
 
 def generate(nvim_dir: Path, output: Path):
@@ -316,11 +344,26 @@ def generate(nvim_dir: Path, output: Path):
         rows    = [[f"`{e['key']}`", e["desc"], e["source"]] for e in entries]
         lines  += [f"## {mode} Mode", ""] + make_table(headers, rows) + [""]
 
+    duplicates = find_duplicates(all_entries)
+    if duplicates:
+        dup_headers = ["키", "출처 1", "출처 2"]
+        dup_rows = [
+            [
+                f"`{d['key']}`",
+                f"{d['entry1']['desc']} ({d['entry1']['source']}, {d['entry1']['mode']})",
+                f"{d['entry2']['desc']} ({d['entry2']['source']}, {d['entry2']['mode']})",
+            ]
+            for d in duplicates
+        ]
+        lines += ["---", "", "## 중복 키맵 충돌", ""] + make_table(dup_headers, dup_rows) + [""]
+
     output.write_text("\n".join(lines) + "\n")
     print(f"✓ {output}")
     print(f"  총 {len(all_entries)}개 키맵  |  nvim-dir: {nvim_dir}")
     for mode in ordered_modes:
         print(f"  {mode}: {len(by_mode[mode])}개")
+    if duplicates:
+        print(f"  ⚠ 중복 키맵 {len(duplicates)}건")
 
 
 # ── 진입점 ─────────────────────────────────────────────────────
