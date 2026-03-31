@@ -293,7 +293,16 @@ return {
     "HiPhish/rainbow-delimiters.nvim",
     dependencies = { { "nvim-treesitter/nvim-treesitter", branch = "main" } },
     event = { "BufReadPre", "BufNewFile" },
-    -- 설치만 해도 자동 활성화됨
+    config = function()
+      -- Neovim 0.12 호환: get_parser()가 nil을 반환할 때 attach에서 에러 발생하는 문제 패치
+      local lib = require("rainbow-delimiters.lib")
+      local orig_attach = lib.attach
+      lib.attach = function(bufnr, lang)
+        local ok, parser = pcall(vim.treesitter.get_parser, bufnr, lang)
+        if not ok or not parser then return end
+        return orig_attach(bufnr, lang)
+      end
+    end,
   },
 
 }
