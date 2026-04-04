@@ -1,11 +1,11 @@
 # nvim
 my nvim configuration
 
-for mac
+## clone location 
 clone to ~/.config/nvim
 
 
-tree-sitter cli
+## tree-sitter cli
 $ npm install -g tree-sitter-cli
 
 or 
@@ -15,5 +15,11 @@ or
 $ cargo install tree-sitter-cli
 
 
+## claude plugin window move
 Claude 창 → 편집 창:  Ctrl+\ Ctrl+n  →  Ctrl+w h
 편집 창 → Claude 창:  Ctrl+w l  →  i
+
+
+## windsurf plugin
+https://github.com/lewis6991/windsurf.nvim
+:Codeium Auth

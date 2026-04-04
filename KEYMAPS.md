@@ -1,7 +1,7 @@
 # Neovim Keymaps
 
-> 자동 생성: 2026-03-25
-> `python3 gen_keymaps.py --nvim-dir /home/saibi/.config/nvim` 로 재생성
+> 자동 생성: 2026-04-04
+> `python3 gen_keymaps.py --nvim-dir /Users/saibi/.config/nvim` 로 재생성
 
 ## Normal Mode
 
@@ -19,6 +19,7 @@
 | `<leader>e`         | —                                                                  | init.lua                    |
 | `g>`                | 다음 진단으로                                                      | init.lua                    |
 | `g<`                | 이전 진단으로                                                      | init.lua                    |
+| `<leader>gd`        | —                                                                  | init.lua                    |
 | `gs`                | 파일 확장자 반대 파일 점프                                         | init.lua                    |
 | `<leader>a`         | AI/Claude Code                                                     | plugins/claudecode.lua      |
 | `<leader>ac`        | Toggle Claude                                                      | plugins/claudecode.lua      |
