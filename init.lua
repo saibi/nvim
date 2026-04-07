@@ -3,6 +3,12 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- 미사용 provider 비활성화 (checkhealth 경고 억제)
+vim.g.loaded_node_provider    = 0
+vim.g.loaded_perl_provider    = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider    = 0
+
 local opts = vim.opt
 
 -- E W 표시 안되도록 하려면 false 로 세팅해야함 

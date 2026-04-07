@@ -5,6 +5,11 @@ my nvim configuration
 clone to ~/.config/nvim
 
 
+## ymkim-laptop (linux mint 의존 패키지 설치)
+sudo apt install ripgrep luarocks
+
+
+
 ## tree-sitter cli
 $ npm install -g tree-sitter-cli
 
