@@ -92,10 +92,10 @@ local function update_screen_boundary_numbers()
     vim.api.nvim_buf_set_extmark(bufnr, ns_id, top_line - 1, 0, opts)
 
     -- 2. 화면 중간
-    if mid_line ~= top_line and mid_line ~= bot_line then
-        opts.virt_text = {{ "󰜬 Mid: " .. mid_line, "DiagnosticHint" }}
-        vim.api.nvim_buf_set_extmark(bufnr, ns_id, mid_line - 1, 0, opts)
-    end
+    -- if mid_line ~= top_line and mid_line ~= bot_line then
+    --     opts.virt_text = {{ "󰜬 Mid: " .. mid_line, "DiagnosticHint" }}
+    --     vim.api.nvim_buf_set_extmark(bufnr, ns_id, mid_line - 1, 0, opts)
+    -- end
 
     -- 3. 화면 최하단
     local display_bot = math.min(bot_line, line_count)
