@@ -1,7 +1,7 @@
 # Neovim Keymaps
 
-> 자동 생성: 2026-04-04
-> `python3 gen_keymaps.py --nvim-dir /Users/saibi/.config/nvim` 로 재생성
+> 자동 생성: 2026-04-08
+> `python3 gen_keymaps.py --nvim-dir /home/saibi/.config/nvim` 로 재생성
 
 ## Normal Mode
 
@@ -65,7 +65,7 @@
 
 | 키          | 설명                     | 출처                |
 | ----------- | ------------------------ | ------------------- |
-| `<C-CR>`    | 제안 전체 수락 (Copilot) | plugins/copilot.lua |
+| `<C-SPACE>` | 제안 전체 수락 (Copilot) | plugins/copilot.lua |
 | `<C-Right>` | 단어 단위 수락 (Copilot) | plugins/copilot.lua |
 | `<C-l>`     | 줄 단위 수락 (Copilot)   | plugins/copilot.lua |
 | `<C-j>`     | 다음 제안 (Copilot)      | plugins/copilot.lua |

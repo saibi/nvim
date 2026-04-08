@@ -11,7 +11,7 @@ return {
         manual = false,
         idle_delay = 75,
         key_bindings = {
-          accept = "<C-CR>",
+          accept = "<C-SPACE>",
           accept_word = "<C-Right>",
           accept_line = "<C-l>",
           next = "<C-j>",
@@ -20,5 +20,9 @@ return {
         },
       },
     })
+
+    vim.schedule(function()
+      vim.api.nvim_set_hl(0, "CodeiumSuggestion", { ctermfg = 244, italic = true })
+    end)
   end,
 }
