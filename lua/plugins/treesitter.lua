@@ -63,8 +63,9 @@ return {
       -- 비동기 설치: defer_fn으로 시작 블로킹 방지
       -- 이미 설치된 파서는 no-op 이므로 매번 실행해도 무방
       vim.defer_fn(function()
-        ts.install(parsers):wait(300000)  -- 최대 5분 대기
-      end, 0)
+        local ok, err = pcall(function() ts.install(parsers) end)
+        if not ok then vim.notify(err, vim.log.levels.WARN) end
+      end, 500)
 
       -- ── Highlight ────────────────────────────────────────────
       -- 신버전: highlight = { enable = true } 옵션 제거됨

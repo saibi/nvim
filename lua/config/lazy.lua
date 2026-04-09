@@ -31,5 +31,15 @@ require("lazy").setup({
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
   -- automatically check for plugin updates
-  checker = { enabled = true, notify = false },
+  checker = { enabled = false },
+})
+
+-- nvim 종료 시 백그라운드에서 플러그인 업데이트
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = function()
+    vim.fn.jobstart(
+      { "nvim", "--headless", "-c", "lua require('lazy').update({show=false,cb=function()vim.cmd('qall!')end})" },
+      { detach = true }
+    )
+  end,
 })
